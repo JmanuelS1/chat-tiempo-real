@@ -19,17 +19,13 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
    console.log('A new client connected');
 
-   socket.on('message', (data) => {
-      console.log('Mensaje recibido:', data); 
-      io.emit('message', data);
-   });
-
    socket.on('disconnect', () => {
       console.log('A client disconnected');
    });
 
    socket.on('chat message', (msg) => {
       io.emit('chat message', msg);
+      console.log(msg)
    })
 });
 
